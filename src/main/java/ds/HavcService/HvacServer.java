@@ -5,7 +5,7 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 
 
-public class HvacServer {
+public class HvacServer extends HvacServiceGrpc.HvacServiceImplBase {
     public static void main(String[] args) throws Exception {
         // 创建gRPC服务
         Server server = ServerBuilder.forPort(50051)

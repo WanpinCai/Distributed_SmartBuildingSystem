@@ -3,8 +3,8 @@
 
 package ds.SecurityService;
 
-public final class SecurityServiceImpl {
-  private SecurityServiceImpl() {}
+public class SecurityServiceImpl {
+  public SecurityServiceImpl(int param) {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
