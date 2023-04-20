@@ -1,0 +1,32 @@
+
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "ds.SecurityService";
+option java_outer_classname = "SecurityServiceImpl";
+
+service SecurityService {
+    // Unary RPC method
+    rpc CheckAccess(AccessRequest) returns (AccessResponse) {}
+
+    // Server Streaming RPC method
+    rpc MonitorRoomActivity(AccessRequest) returns (stream ActivityEvent) {}
+
+    // Client Streaming RPC method
+    rpc CheckMultipleAccess(stream AccessRequest) returns (AccessResponse) {}
+}
+
+message AccessRequest {
+    string user_id = 1;
+    string room_id = 2;
+}
+
+message AccessResponse {
+    bool has_access = 1;
+}
+
+message ActivityEvent {
+    string event_type = 1;
+    string description = 2;
+}

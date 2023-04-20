@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "ds.LightService";
+option java_outer_classname = "LightServiceImpl";
+
+service LightService {
+    // Unary RPC Method to turn on or off the light
+    rpc turnOnOff (LightRequest) returns (Empty) {}
+
+    // Server streaming RPC Method to get current brightness value
+    rpc getCurrentBrightness (LightRequest) returns (stream LightResponse) {}
+
+    // Bidirectional streaming RPC Method to set brightness value
+    rpc setBrightness (stream LightRequest) returns (stream LightResponse) {}
+}
+
+message LightRequest {
+    bool isOn = 1;
+    int32 brightness = 2;
+}
+
+message LightResponse {
+    int32 brightness = 1;
+}
+
+message Empty{
+
+}

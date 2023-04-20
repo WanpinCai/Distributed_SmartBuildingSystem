@@ -1,0 +1,34 @@
+
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "ds.HavcService";
+option java_outer_classname = "HavcServiceImpl";
+
+service HvacService {
+    // Unary RPC Method
+    rpc setTemperature (TemperatureRequest) returns (ConfirmationMessage) {}
+
+    // Server Streaming RPC Method
+    rpc getTemperatureStream (TemperatureRequest) returns (stream TemperatureValue) {}
+
+    // Bidirectional Streaming RPC Method
+    rpc controlTemperature (stream TemperatureValue) returns (stream TemperatureValue) {}
+}
+
+message TemperatureRequest {
+    int32 temperature = 1;
+}
+
+message ConfirmationMessage {
+    string message = 1;
+}
+
+message TemperatureValue {
+    int32 temperature = 1;
+}
+
+
+
+
